@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerComponent implements OnInit {
 
-  name:string = '';
+  name = '';
   
   constructor() {
 
