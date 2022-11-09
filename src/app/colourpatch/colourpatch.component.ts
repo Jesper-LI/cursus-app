@@ -11,6 +11,8 @@ export class ColourpatchComponent implements OnInit {
   colours: ColourObject[] = [];
   myBackground = '';
 
+  currentPatch = new ColourObject(0,0,0,1)
+
   constructor() {
 
   }
@@ -24,8 +26,12 @@ export class ColourpatchComponent implements OnInit {
   }
 
   onClickPatch(colour: ColourObject) {
-    alert(`Geklikt op ${colour.name} met waarde ${colour.rgba}`);
+    // alert(`Geklikt op ${colour.name} met waarde ${colour.rgba}`);
     this.myBackground = colour.rgba;
+  }
+
+  onChangePatch(colour : ColourObject) {
+    this.myBackground = colour.getRGBA();
   }
 
 }
