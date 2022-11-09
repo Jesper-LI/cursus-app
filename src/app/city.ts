@@ -4,6 +4,6 @@ export class City {
         public name:string,
         public province:string
     ) {
-
+        
     }
 }

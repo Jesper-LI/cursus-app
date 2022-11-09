@@ -3,6 +3,13 @@
     <div class="col-8-md">
       <h1>{{title}}</h1>
       <h2>Welkom {{name}}</h2>
+      <ul class="list-group" *ngIf="cities">
+        <li class="list-group-item" *ngFor="let city of cities">
+          {{city.id}} - {{city.name}} ({{city.province}})
+        </li>
+      </ul>
+      <p *ngIf="showCities">Jij hebt veel favoriete steden zeg.</p> 
+      <!-- In dit geval is dit niet heel erg declaritive omdat de logica erachter wel heel erg simpel is -->
       <app-customer></app-customer>
     </div>
   </div>
