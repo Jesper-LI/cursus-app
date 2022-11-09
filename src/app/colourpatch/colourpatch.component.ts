@@ -8,8 +8,8 @@ import { ColourObject } from "./../colour-object";
 })
 export class ColourpatchComponent implements OnInit {
 
-  colours:ColourObject[] = [];
-  rgba = '';
+  colours: ColourObject[] = [];
+  myBackground = '';
 
   constructor() {
 
@@ -17,11 +17,15 @@ export class ColourpatchComponent implements OnInit {
 
   ngOnInit(): void {
     this.colours = [
-      new ColourObject(255,0,0,1,''),
-      new ColourObject(0,0,255,1,''),
-      new ColourObject(60,179,113,1,'')
+      new ColourObject(255, 0, 0, 1, 'red'),
+      new ColourObject(0, 0, 255, 1, 'blue'),
+      new ColourObject(60, 179, 113, 1, 'green')
     ];
-    this.colours.forEach(color => color.rgba = `rgba(${color.r},${color.g},${color.b},${color.a})`);
+  }
+
+  onClickPatch(colour: ColourObject) {
+    alert(`Geklikt op ${colour.name} met waarde ${colour.rgba}`);
+    this.myBackground = colour.rgba;
   }
 
 }
