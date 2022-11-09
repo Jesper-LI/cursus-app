@@ -1,7 +1,4 @@
 <h2>Onze gewaardeerde klanten: {{name}}</h2>
-    <ul>
-        <li>Macrohard</li>
-        <li>Guugle</li>
-        <li>Feesboek</li>
-        <li>Tweeter</li>
+    <ul *ngIf="customers" class="list-group">
+        <li *ngFor="let customer of customers" class="list-group-item">{{customer}}</li>
     </ul>

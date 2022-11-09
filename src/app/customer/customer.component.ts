@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CustomerComponent implements OnInit {
 
   name = '';
+  customers:string[] = [];
   
   constructor() {
 
@@ -15,6 +16,7 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.name = 'Henk';
+    this.customers = ['Marcohard','guugle','feeboek','tweeeter'];
   }
 
 }
