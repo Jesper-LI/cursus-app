@@ -9,8 +9,8 @@
         <!--Voordeel van Declaritive valt hier een beetje weg-->
         <span *ngSwitchCase="false">Toon lijst met steden</span>
       </span>
-      <ul class="list-group" *ngIf="cities && showCities">
-        <li class="list-group-item" *ngFor="let city of cities" (click)="showCity(city)">
+      <ul class="list-group" *ngIf="cities$ && showCities">
+        <li class="list-group-item" *ngFor="let city of cities$ | async" (click)="showCity(city)">
           {{city.id}} - {{city.name}} ({{city.province}})
         </li>
       </ul>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { City } from "./city";
 import { CityService } from './services/city.service';
 
@@ -10,21 +11,23 @@ import { CityService } from './services/city.service';
 export class AppComponent {
   title = 'Welkom dit is een angular Cursus';
   name = 'Henkus Dingus';
-  cities:City[] = [];
-  showCities:Boolean = true;
+  cities: City[] = [];
+  cities$!:Observable<City[]>;
+  showCities: Boolean = true;
   toggleMsg = 'Verberg lijst met steden';
-  nlText= {
-    t1 : 'Verberg lijst met steden',
-    t2 :'Toon lijst met steden LNG'
+  nlText = {
+    t1: 'Verberg lijst met steden',
+    t2: 'Toon lijst met steden LNG'
   }
-  currentCity: City = new City(0,'','');
+  currentCity: City = new City(0, '', '');
 
-  constructor(private cityService : CityService) {
+  constructor(private cityService: CityService) {
 
   }
 
   ngOnInit(): void {
-    this.cities = this.cityService.getCities();
+    // this.cityService.getCities().subscribe(cityArray => this.cities = cityArray);
+    this.cities$ = this.cityService.getCities();
   }
 
   toggleCities(event: Event) {
@@ -37,11 +40,11 @@ export class AppComponent {
     this.currentCity = city;
     // alert(`Uw favoriete stad is ${this.currentCity.name}`);
   }
-  addCity(cityName: string, cityPhotoUrl:string, provinceIndex:number) {
+  addCity(cityName: string, cityPhotoUrl: string, provinceIndex: number) {
     this.cityService.addCity(cityName, cityPhotoUrl, provinceIndex);
   }
 
-  getProvinces(){
+  getProvinces() {
     return this.cityService.getProvinces();
   }
 }
