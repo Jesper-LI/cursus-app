@@ -3,7 +3,7 @@
     <div class="col-8-md">
       <h1>{{title}}</h1>
       <h2>Welkom {{name}}</h2>
-      <input type="checkbox" name="" id="" (change)="toggleCities()">
+      <input type="checkbox" name="" id="" (change)="toggleCities($event)">
       <span [ngSwitch]="showCities">
         <span *ngSwitchCase="true">{{nlText.t1}}</span> <!--Voordeel van Declaritive valt hier een beetje weg-->
         <span *ngSwitchCase="false">Toon lijst met steden</span>

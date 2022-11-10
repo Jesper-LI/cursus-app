@@ -6,7 +6,7 @@
       [style.background]='color.getRGBA()' 
       class="col"
       [title]="color.name"
-      (click)="onClickPatch(color)">rgba= {{color.rgba}}</div>
+      (click)="onClickPatch(color)">rgba= {{color.getRGBA()}}</div>
   </div>
   <div>
     <form (action)="onClickPatch(currentPatch)">

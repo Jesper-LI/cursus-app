@@ -29,7 +29,9 @@ export class AppComponent {
       new City(4, 'Assen', 'DR'),
     ];
   }
-  toggleCities() {
+  toggleCities(event: Event) {
+    let input = event.target as HTMLInputElement;
+    console.log(input.value);
     this.showCities = !this.showCities;
   }
 }

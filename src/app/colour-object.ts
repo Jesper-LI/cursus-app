@@ -14,7 +14,7 @@ export class ColourObject {
     /**
      * getRGBA
      */
-    public getRGBA() {
+    public getRGBA():string {
         return `rgba(${this.r},${this.g},${this.b},${this.a})`;
     }
 
