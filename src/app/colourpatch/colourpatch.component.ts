@@ -28,7 +28,8 @@ export class ColourpatchComponent implements OnInit {
 
   onClickPatch(colour: ColourObject) {
     // alert(`Geklikt op ${colour.name} met waarde ${colour.rgba}`);
-    debugger;
-    this.myBackground = colour.getRGBA();
+    let color = colour;
+    color.rgba= color.getRGBA()
+    this.currentPatch = color;
   }
 }
