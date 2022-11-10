@@ -16,6 +16,7 @@ export class AppComponent {
     t1 : 'Verberg lijst met steden',
     t2 :'Toon lijst met steden LNG'
   }
+  currentCity: City = new City(0,'','');
 
   constructor() {
 
@@ -36,6 +37,7 @@ export class AppComponent {
   }
 
   showCity(city: City) {
-    alert(`Uw favoriete stad is ${city.name}`);
+    this.currentCity = city;
+    alert(`Uw favoriete stad is ${this.currentCity.name}`);
   }
 }
