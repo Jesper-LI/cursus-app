@@ -38,7 +38,7 @@ export class AppComponent {
 
   showCity(city: City) {
     this.currentCity = city;
-    alert(`Uw favoriete stad is ${this.currentCity.name}`);
+    // alert(`Uw favoriete stad is ${this.currentCity.name}`);
   }
   addCity(cityName: string) {
     let addedCity = new City(this.cities.length+1, cityName, 'onbekend');
