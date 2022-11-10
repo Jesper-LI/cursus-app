@@ -34,4 +34,8 @@ export class AppComponent {
     console.log(input.value);
     this.showCities = !this.showCities;
   }
+
+  showCity(city: City) {
+    alert(`Uw favoriete stad is ${city.name}`);
+  }
 }
