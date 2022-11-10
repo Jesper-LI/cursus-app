@@ -13,8 +13,14 @@
           {{city.id}} - {{city.name}} ({{city.province}})
         </li>
       </ul>
+      <div *ngIf="currentCity">
+        <img [src]="currentCity.url" [alt]="currentCity.name" class="img-fluid">
+      </div>
       <p *ngIf="showCities">Jij hebt veel favoriete steden zeg.</p> 
       <!-- In dit geval is dit niet heel erg declaritive omdat de logica erachter wel heel erg simpel is -->
+      <input type="text" name="" id="" #txtCity (keyup.enter)="addCity(txtCity.value)">
+      <button (click)="addCity(txtCity.value)">Voeg stad toe</button>
+      
       <app-customer></app-customer>
       <app-colourpatch></app-colourpatch>
     </div>
