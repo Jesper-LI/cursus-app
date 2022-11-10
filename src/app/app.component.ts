@@ -10,7 +10,12 @@ export class AppComponent {
   title = 'Welkom dit is een angular Cursus';
   name = 'Henkus Dingus';
   cities:City[] = [];
-  showCities:Boolean = false;
+  showCities:Boolean = true;
+  toggleMsg = 'Verberg lijst met steden';
+  nlText= {
+    t1 : 'Verberg lijst met steden',
+    t2 :'Toon lijst met steden LNG'
+  }
 
   constructor() {
 
@@ -23,7 +28,8 @@ export class AppComponent {
       new City(3, 'Den Haag', 'ZH'),
       new City(4, 'Assen', 'DR'),
     ];
-    this.showCities = this.cities.length > 3;
-
+  }
+  toggleCities() {
+    this.showCities = !this.showCities;
   }
 }

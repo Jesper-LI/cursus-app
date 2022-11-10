@@ -3,7 +3,12 @@
     <div class="col-8-md">
       <h1>{{title}}</h1>
       <h2>Welkom {{name}}</h2>
-      <ul class="list-group" *ngIf="cities">
+      <input type="checkbox" name="" id="" (change)="toggleCities()">
+      <span [ngSwitch]="showCities">
+        <span *ngSwitchCase="true">{{nlText.t1}}</span> <!--Voordeel van Declaritive valt hier een beetje weg-->
+        <span *ngSwitchCase="false">Toon lijst met steden</span>
+      </span>
+      <ul class="list-group" *ngIf="cities && showCities">
         <li class="list-group-item" *ngFor="let city of cities">
           {{city.id}} - {{city.name}} ({{city.province}})
         </li>

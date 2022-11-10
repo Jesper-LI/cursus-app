@@ -2,7 +2,10 @@
 <div [style.background]="currentPatch.getRGBA()">
   <p>Ja!</p>
   <div class="row">
-    <div *ngFor="let color of colours" [style.background]='color.rgba' class="col" [title]="color.name"
+    <div *ngFor="let color of colours" 
+      [style.background]='color.getRGBA()' 
+      class="col"
+      [title]="color.name"
       (click)="onClickPatch(color)">rgba= {{color.rgba}}</div>
   </div>
   <div>
