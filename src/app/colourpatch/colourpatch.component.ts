@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ColourObject } from "./../colour-object";
 
 @Component({
   selector: 'app-colourpatch',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './colourpatch.component.html',
   styleUrls: ['./colourpatch.component.css']
 })
