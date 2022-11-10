@@ -1,5 +1,5 @@
 <h2>colour patch</h2>
-<div [style.background]="myBackground">
+<div [style.background]="currentPatch.getRGBA()">
   <p>Ja!</p>
   <div class="row">
     <div *ngFor="let color of colours" [style.background]='color.rgba' class="col" [title]="color.name"
@@ -7,11 +7,10 @@
   </div>
   <div>
     <form (action)="onClickPatch(currentPatch)">
-        <label for="r">r</label><input name="r" type="range" min="0" max="255" [(ngModel)]="currentPatch.r" (ngModelChange)="onChangePatch(currentPatch)"/>{{currentPatch.r}} <br>
-        <label for="g">r</label><input name="g" type="range" min="0" max="255" [(ngModel)]="currentPatch.g" (ngModelChange)="onChangePatch(currentPatch)"/>{{currentPatch.g}} <br>
-        <label for="b">r</label><input name="b" type="range" min="0" max="255" [(ngModel)]="currentPatch.b" (ngModelChange)="onChangePatch(currentPatch)"/>{{currentPatch.b}} <br>
-        <label for="a">r</label><input name="a" type="range" min="0" max="1" step="0.01" [(ngModel)]="currentPatch.a" (ngModelChange)="onChangePatch(currentPatch)">{{currentPatch.a}} <br>
+        <label for="r">r</label><input name="r" type="range" min="0" max="255" [(ngModel)]="currentPatch.r"/>{{currentPatch.r}} <br>
+        <label for="g">r</label><input name="g" type="range" min="0" max="255" [(ngModel)]="currentPatch.g"/>{{currentPatch.g}} <br>
+        <label for="b">r</label><input name="b" type="range" min="0" max="255" [(ngModel)]="currentPatch.b"/>{{currentPatch.b}} <br>
+        <label for="a">r</label><input name="a" type="range" min="0" max="1" step="0.01" [(ngModel)]="currentPatch.a">{{currentPatch.a}} <br>
     </form>
-    
   </div>
 </div>
