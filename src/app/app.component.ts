@@ -37,8 +37,11 @@ export class AppComponent {
     this.currentCity = city;
     // alert(`Uw favoriete stad is ${this.currentCity.name}`);
   }
-  addCity(cityName: string) {
-    let addedCity = new City(this.cities.length+1, cityName, 'onbekend');
-    this.cities.push(addedCity);
+  addCity(cityName: string, cityPhotoUrl:string, provinceIndex:number) {
+    this.cityService.addCity(cityName, cityPhotoUrl, provinceIndex);
+  }
+
+  getProvinces(){
+    return this.cityService.getProvinces();
   }
 }

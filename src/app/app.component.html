@@ -5,7 +5,8 @@
       <h2>Welkom {{name}}</h2>
       <input type="checkbox" name="" id="" (change)="toggleCities($event)">
       <span [ngSwitch]="showCities">
-        <span *ngSwitchCase="true">{{nlText.t1}}</span> <!--Voordeel van Declaritive valt hier een beetje weg-->
+        <span *ngSwitchCase="true">{{nlText.t1}}</span>
+        <!--Voordeel van Declaritive valt hier een beetje weg-->
         <span *ngSwitchCase="false">Toon lijst met steden</span>
       </span>
       <ul class="list-group" *ngIf="cities && showCities">
@@ -16,11 +17,22 @@
       <div *ngIf="currentCity">
         <img [src]="currentCity.url" [alt]="currentCity.name" class="img-fluid">
       </div>
-      <p *ngIf="showCities">Jij hebt veel favoriete steden zeg.</p> 
+      <p *ngIf="showCities">Jij hebt veel favoriete steden zeg.</p>
       <!-- In dit geval is dit niet heel erg declaritive omdat de logica erachter wel heel erg simpel is -->
-      <input type="text" name="" id="" #txtCity (keyup.enter)="addCity(txtCity.value)">
-      <button (click)="addCity(txtCity.value)">Voeg stad toe</button>
-      
+      <form action="">
+        <input type="text" name="" id="" class="form-group-item" #txtCity
+          (keyup.enter)="addCity(txtCity.value, urlCity.value, indexCity.valueAsNumber)">
+        <input type="text" name="" id="" #urlCity
+          (keyup.enter)="addCity(txtCity.value, urlCity.value, indexCity.valueAsNumber)">
+        <input type="number" name="" id="" #indexCity
+          (keyup.enter)="addCity(txtCity.value, urlCity.value, indexCity.valueAsNumber)">
+
+        <button (click)="addCity(txtCity.value, urlCity.value, indexCity.valueAsNumber)" class="btn btn-primary">Voeg
+          stad toe</button>
+      </form>
+
+
+
       <app-customer></app-customer>
       <app-colourpatch></app-colourpatch>
     </div>
