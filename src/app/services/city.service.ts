@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+//Oberservable stuff
+import { tap, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+// import { of } from 'rxjs/operators';
 import { City } from '../city';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CityService {
-  
+  url= 'http://localhost:3000/cities';
   private cities: City[] = [
   ];
 
@@ -34,6 +36,15 @@ export class CityService {
       .get<City[]>('../assets/cities.json')
       .pipe(tap(result => console.log(`Dit komt binnen als Observable : ${result}`)
       ))
+  }
+  getCitiesJsonServer() : Observable<City[]> {
+    return this.http.get<City[]>(this.url).pipe(
+      tap(result => console.log('via json-server: ',result))//,
+      // catchError(err => {
+      //   console.log('Kaput ser niet lopen niet');
+      //   return of(err); //Breaks?
+      // })
+    );
   }
 
   getCity(id: number) {

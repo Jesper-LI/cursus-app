@@ -1,26 +1,28 @@
-[
-    {
-        "id": 1,
-        "name" : "Groningen",
-        "province" : 1,
-        "url" : "https://www.27vakantiedagen.nl/wp-content/uploads/2021/02/groningen-stad.jpg"
-    },
-    {
-        "id": 2,
-        "name" : "Hengeloo",
-        "province" : 2,
-        "url" : "https://hengelo.nu/wp-content/uploads/2021/09/Enschedesestraat-Hengelo-4.jpg"
-    },
-    {
-        "id": 3,
-        "name" : "Den Haag",
-        "province" : 4,
-        "url" : "https://www.reisroutes.be/userfiles/fotos/skyline-van-den-haag-nederland_28879_xl.jpg"
-    },
-    {
-        "id": 4,
-        "name" : "Assen",
-        "province" : 3,
-        "url" : "https://www.holland.com/upload_mm/2/0/c/78014_fullimage_people%20enjoying%20the%20spring%20weather%20at%20restaurants%20in%20assen%20%C2%A9%20marc%20venema%20via%20shutterstock.jpg"
-    }
-]
+{
+    "cities": [
+        {
+            "id": 1,
+            "name": "Groningen",
+            "province": 1,
+            "url": "https://www.27vakantiedagen.nl/wp-content/uploads/2021/02/groningen-stad.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Hengeloo",
+            "province": 2,
+            "url": "https://hengelo.nu/wp-content/uploads/2021/09/Enschedesestraat-Hengelo-4.jpg"
+        },
+        {
+            "id": 3,
+            "name": "Den Haag",
+            "province": 4,
+            "url": "https://www.reisroutes.be/userfiles/fotos/skyline-van-den-haag-nederland_28879_xl.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Assen",
+            "province": 3,
+            "url": "https://www.holland.com/upload_mm/2/0/c/78014_fullimage_people%20enjoying%20the%20spring%20weather%20at%20restaurants%20in%20assen%20%C2%A9%20marc%20venema%20via%20shutterstock.jpg"
+        }
+    ]
+}
