@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 //Oberservable stuff
 import { tap, catchError } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 // import { of } from 'rxjs/operators';
 import { City } from '../city';
 
@@ -31,24 +31,34 @@ export class CityService {
 
   constructor(private http: HttpClient) { }
 
-  getCities(): Observable<City[]> {
+  getCitiesOLD(): Observable<City[]> {
     return this.http
       .get<City[]>('../assets/cities.json')
       .pipe(tap(result => console.log(`Dit komt binnen als Observable : ${result}`)
       ))
   }
-  getCitiesJsonServer() : Observable<City[]> {
+  getCities() : Observable<City[]> {
     return this.http.get<City[]>(this.url).pipe(
-      tap(result => console.log('via json-server: ',result))//,
-      // catchError(err => {
-      //   console.log('Kaput ser niet lopen niet');
-      //   return of(err); //Breaks?
-      // })
+      tap(result => console.log('via json-server: ',result)),
+      catchError(err => {
+        console.log('Kaput ser niet lopen niet');
+        return throwError(() => new Error(err)); //Breaks?
+      })
     );
   }
 
-  getCity(id: number) {
+  getCityOLD(id: number) {
     return this.cities.find(c => c.id === id);
+  }
+  //Retourneer City op basis van id
+  getCity(id:number) : Observable<City> {
+    return this.http.get<City>(`${this.url}/${id}`);
+  }
+
+
+
+  deleteCity(city:City): void{
+    this.http.delete<City>(`${this.url}/${city.id}`);
   }
 
   getProvinces() {
@@ -56,13 +66,20 @@ export class CityService {
   }
 
 
-  addCity(cityName: string, cityPhotoUrl: string, provinceIndex: number) {
-    let addedCity = new City(
-      this.cities.length + 1,
-      cityName,
-      Object.entries(this.province).find(provinceEntry => Number(provinceEntry[0]) == provinceIndex)?.[1],
-      cityPhotoUrl);
-    this.cities.push(addedCity);
+  // addCity(cityName: string, cityPhotoUrl: string, provinceIndex: number) {
+  //   let addedCity = new City(
+  //     this.cities.length + 1,
+  //     cityName,
+  //     Object.entries(this.province).find(provinceEntry => Number(provinceEntry[0]) == provinceIndex)?.[1],
+  //     cityPhotoUrl);
+  //   this.cities.push(addedCity);
+  // }
+
+  addCity(newCity:City):Observable<City> {
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json');
+    return this.http.post(this.url, newCity, {headers: headers}) as Observable<City>;
   }
+
 
 }

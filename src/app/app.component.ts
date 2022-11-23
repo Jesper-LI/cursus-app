@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, EMPTY } from 'rxjs';
 import { City } from "./city";
 import { CityService } from './services/city.service';
 
@@ -20,6 +20,7 @@ export class AppComponent {
     t2: 'Toon lijst met steden LNG'
   }
   currentCity: City = new City(0, '', '');
+  currentCity$!:Observable<City>;
 
   constructor(private cityService: CityService) {
 
@@ -38,12 +39,33 @@ export class AppComponent {
 
   showCity(city: City) {
     this.currentCity = city;
+    // this.currentCity = this.cityService.getCity(city.id)
     // alert(`Uw favoriete stad is ${this.currentCity.name}`);
   }
+  getCity(id:number) {
+    //Todo
+    console.log(id);
+    this.currentCity$ = this.cityService.getCity(id);
+    
+  }
+  //OLD
+  // addCity(cityName: string, cityPhotoUrl: string, provinceIndex: number) {
+  //   this.cityService.addCity(cityName, cityPhotoUrl, provinceIndex);
+  // }
   addCity(cityName: string, cityPhotoUrl: string, provinceIndex: number) {
-    this.cityService.addCity(cityName, cityPhotoUrl, provinceIndex);
+    const newCity = new City(NaN,cityName, provinceIndex.toString(), cityPhotoUrl);
+    this.cityService.addCity(newCity).subscribe((addedCity) => {
+      //Cities opnieuw ophalen in de subscription
+      this.cities$ = this.cityService.getCities();
+    });
+  }
+  clear() {
+    this.currentCity$ = EMPTY //Not sure if this is OK
   }
 
+  deleteCity(city:City){
+    this.cityService.deleteCity(city).;
+  }
   getProvinces() {
     return this.cityService.getProvinces();
   }

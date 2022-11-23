@@ -10,10 +10,26 @@
         <span *ngSwitchCase="false">Toon lijst met steden</span>
       </span>
       <ul class="list-group" *ngIf="cities$ && showCities">
-        <li class="list-group-item" *ngFor="let city of cities$ | async" (click)="showCity(city)">
+        <li class="list-group-item" *ngFor="let city of cities$ | async" 
+        (click)="getCity(city.id)">
           {{city.id}} - {{city.name}} ({{city.province}})
         </li>
       </ul>
+      <div *ngIf="currentCity$ | async as city">
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-info">
+            <h3>Gekozen Stad</h3>
+          </li>
+          <li class="list-group-item">
+            <strong>Stad: </strong>{{city.name}} (id: {{city.id}})
+          </li>
+          <li class="list-group-item">
+            <img [src]="city.url" [alt]="city.name" class="img-fluid">
+          </li>
+        </ul>
+        <button class="btn btn-warning" (click)="clear()">Clear</button>
+        <button class="btn btn-danger" (click)="">Delete City</button>
+      </div>
       <div *ngIf="currentCity">
         <img [src]="currentCity.url" [alt]="currentCity.name" class="img-fluid">
       </div>
