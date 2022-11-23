@@ -64,7 +64,10 @@ export class AppComponent {
   }
 
   deleteCity(city:City){
-    this.cityService.deleteCity(city).;
+    this.cityService.deleteCity(city).subscribe((removedCity) => {
+      this.cities$ = this.cityService.getCities();
+      this.clear();
+    });
   }
   getProvinces() {
     return this.cityService.getProvinces();

@@ -28,7 +28,7 @@
           </li>
         </ul>
         <button class="btn btn-warning" (click)="clear()">Clear</button>
-        <button class="btn btn-danger" (click)="">Delete City</button>
+        <button class="btn btn-danger" (click)="deleteCity(city)">Delete City</button>
       </div>
       <div *ngIf="currentCity">
         <img [src]="currentCity.url" [alt]="currentCity.name" class="img-fluid">

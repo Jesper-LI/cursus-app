@@ -57,8 +57,8 @@ export class CityService {
 
 
 
-  deleteCity(city:City): void{
-    this.http.delete<City>(`${this.url}/${city.id}`);
+  deleteCity(city:City):Observable<City>{
+    return this.http.delete<City>(`${this.url}/${city.id}`);
   }
 
   getProvinces() {
